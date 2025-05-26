@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-disable: #919eab;
+  --color-primary: #1c252e;
+
+  --color-warning: #ffab00;
+
+  --color-lighter: #fff5cc;
+  --color-light: #ffd666;
+
+  --color-darker: #7a0916;
+
+  --color-dark: #b71d18;
+  /* Color blue */
+  --color-blue: #0155c6;
+  --color-blue-50: #e6f0ff;
+  --color-blue-100: #c0d4ff;
+  --color-blue-200: #99b8ff;
+  --color-blue-300: #739cff;
+  --color-blue-400: #4c81ff;
+  --color-blue-500: #0373f3;
+  --color-blue-600: #025fca;
+  --color-blue-700: #0258b9;
+  --color-blue-800: #014a9c;
+
+  --color-brand-50: #e6f1ff;
+  --font-family: "Inter", sans-serif;
+  --font-epilogue: "Epilogue", sans-serif;
+}
+
+:root {
+  @apply font-family;
+}
+
+@layer utilities {
+  .starburst-custom {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(0deg, transparent 50%, #1962be 50%),
+      linear-gradient(11deg, transparent 50%, #2897e6 50%),
+      linear-gradient(22deg, transparent 50%, #1962be 50%),
+      linear-gradient(33deg, transparent 50%, #2897e6 50%),
+      linear-gradient(44deg, transparent 50%, #1962be 50%),
+      linear-gradient(55deg, transparent 50%, #2897e6 50%),
+      linear-gradient(66deg, transparent 50%, #1962be 50%),
+      linear-gradient(77deg, transparent 50%, #2897e6 50%),
+      linear-gradient(88deg, transparent 50%, #1962be 50%),
+      linear-gradient(99deg, transparent 50%, #2897e6 50%),
+      linear-gradient(110deg, transparent 50%, #1962be 50%),
+      linear-gradient(121deg, transparent 50%, #2897e6 50%),
+      linear-gradient(132deg, transparent 50%, #1962be 50%),
+      linear-gradient(143deg, transparent 50%, #2897e6 50%),
+      linear-gradient(154deg, transparent 50%, #1962be 50%),
+      linear-gradient(165deg, transparent 50%, #2897e6 50%),
+      linear-gradient(176deg, transparent 50%, #1962be 50%),
+      linear-gradient(187deg, transparent 50%, #2897e6 50%),
+      linear-gradient(198deg, transparent 50%, #1962be 50%),
+      linear-gradient(209deg, transparent 50%, #2897e6 50%),
+      linear-gradient(220deg, transparent 50%, #1962be 50%),
+      linear-gradient(231deg, transparent 50%, #2897e6 50%),
+      linear-gradient(242deg, transparent 50%, #1962be 50%),
+      linear-gradient(253deg, transparent 50%, #2897e6 50%),
+      linear-gradient(264deg, transparent 50%, #1962be 50%),
+      linear-gradient(275deg, transparent 50%, #2897e6 50%),
+      linear-gradient(286deg, transparent 50%, #1962be 50%),
+      linear-gradient(297deg, transparent 50%, #2897e6 50%),
+      linear-gradient(308deg, transparent 50%, #1962be 50%),
+      linear-gradient(319deg, transparent 50%, #2897e6 50%),
+      linear-gradient(330deg, transparent 50%, #1962be 50%),
+      linear-gradient(341deg, transparent 50%, #2897e6 50%),
+      linear-gradient(352deg, transparent 50%, #1962be 50%);
+  }
+
+  .starburst-custom::before,
+  .starburst-custom::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .starburst-custom::before {
+    background-image: linear-gradient(180deg, transparent 50%, #1962be 50%),
+      linear-gradient(191deg, transparent 50%, #2897e6 50%),
+      linear-gradient(202deg, transparent 50%, #1962be 50%),
+      linear-gradient(213deg, transparent 50%, #2897e6 50%),
+      linear-gradient(224deg, transparent 50%, #1962be 50%),
+      linear-gradient(235deg, transparent 50%, #2897e6 50%),
+      linear-gradient(246deg, transparent 50%, #1962be 50%),
+      linear-gradient(257deg, transparent 50%, #2897e6 50%),
+      linear-gradient(268deg, transparent 50%, #1962be 50%),
+      linear-gradient(279deg, transparent 50%, #2897e6 50%),
+      linear-gradient(290deg, transparent 50%, #1962be 50%),
+      linear-gradient(301deg, transparent 50%, #2897e6 50%),
+      linear-gradient(312deg, transparent 50%, #1962be 50%),
+      linear-gradient(323deg, transparent 50%, #2897e6 50%),
+      linear-gradient(334deg, transparent 50%, #1962be 50%),
+      linear-gradient(345deg, transparent 50%, #2897e6 50%),
+      linear-gradient(356deg, transparent 50%, #1962be 50%);
+  }
+
+  .starburst-custom::after {
+    top: 50% !important;
+    background-position: 0 100%;
+    background-size: 100% 200%;
+    background-image: linear-gradient(0deg, transparent 50%, #1962be 50%),
+      linear-gradient(11deg, transparent 50%, #2897e6 50%),
+      linear-gradient(22deg, transparent 50%, #1962be 50%),
+      linear-gradient(33deg, transparent 50%, #2897e6 50%),
+      linear-gradient(44deg, transparent 50%, #1962be 50%),
+      linear-gradient(55deg, transparent 50%, #2897e6 50%),
+      linear-gradient(66deg, transparent 50%, #1962be 50%),
+      linear-gradient(77deg, transparent 50%, #2897e6 50%),
+      linear-gradient(88deg, transparent 50%, #1962be 50%),
+      linear-gradient(99deg, transparent 50%, #2897e6 50%),
+      linear-gradient(110deg, transparent 50%, #1962be 50%),
+      linear-gradient(121deg, transparent 50%, #2897e6 50%),
+      linear-gradient(132deg, transparent 50%, #1962be 50%),
+      linear-gradient(143deg, transparent 50%, #2897e6 50%),
+      linear-gradient(154deg, transparent 50%, #1962be 50%),
+      linear-gradient(165deg, transparent 50%, #2897e6 50%),
+      linear-gradient(176deg, transparent 50%, #1962be 50%);
+  }
+
+  /* .vignette-bg {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(125, 185, 232, 0) 0%,
+      rgba(124, 183, 230, 0) 1%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  } */
+}
