@@ -2,7 +2,7 @@ import { ImageLogoFooter } from "@/assets";
 
 export default function FooterInfo() {
   return (
-    <div className="flex flex-col gap-8 ">
+    <div className="flex flex-col gap-4 md:gap-8 ">
       <h2 className="text-base/7 font-semibold text-blue-800 uppercase w-max">
         Viet Hung Auto Production Trading Joint Stock Company
       </h2>

@@ -5,7 +5,7 @@ export default function Logo() {
     <img
       src={logo}
       alt="Logo"
-      className="w-full h-full max-w-[250px] object-center"
+      className="w-full h-full max-w-[100px] md:max-w-[250px] object-center"
     />
   );
 }

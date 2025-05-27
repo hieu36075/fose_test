@@ -12,14 +12,14 @@ const options = [
 export const FilterTabs = React.memo(
   ({ selected, onChange }: FilterTabProps) => {
     return (
-      <div className="flex gap-3">
+      <div className="flex gap-3 ml-auto md:ml-0">
         {options.map((option) => {
           const isActive = selected === option.value;
           return (
             <div
               key={option.value}
               onClick={() => onChange(option.value)}
-              className={`relative px-4 py-2 rounded-lg text-sm/6 font-bold border transition-all bg-white cursor-pointer
+              className={`relative px-4 py-2 text-xs rounded-lg md:text-sm/6 font-bold border transition-all bg-white cursor-pointer
               ${
                 isActive
                   ? "text-blue-600 border-blue-500 "

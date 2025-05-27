@@ -31,7 +31,7 @@ export const FilterSidebar = () => {
     dispatch({ type: "TOGGLE_ORIGIN", payload: origin });
   };
   return (
-    <div className="flex flex-col w-1/5">
+    <div className="hidden md:flex flex-col w-1/5 bg-white rounded-lg shadow-xs">
       <div className="flex w-full gap-3 p-3">
         <FilterIcon className="w-8 h-8" />
         <h2 className="text-xl font-bold">Left Sidebar</h2>
@@ -39,8 +39,8 @@ export const FilterSidebar = () => {
       <Divider />
       <div className="flex flex-col">
         <Accordion allowMultipleOpen>
-          <AccordionItem defaultOpen id="price" title="Filter by Price">
-            <div className="flex flex-col gap-3">
+          <AccordionItem defaultOpen id="price" title="Danh mục sản phẩm">
+            <div className="flex flex-col gap-3 pb-3">
               {categoryProducts.map((item) => (
                 <div
                   className="flex gap-3 items-center"
@@ -61,7 +61,7 @@ export const FilterSidebar = () => {
             </div>
           </AccordionItem>
           <AccordionItem defaultOpen id="priceRange" title="Khoảng giá">
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3  pb-3">
               {priceRangeDataFilter.map((item) => (
                 <div
                   className="flex gap-3 items-center justify-center border border-[#919EAB3D] rounded-1 py-2"
@@ -75,21 +75,25 @@ export const FilterSidebar = () => {
             </div>
           </AccordionItem>
           <AccordionItem defaultOpen id="brand" title="Thương hiệu">
-            {brandDataFilter.map((item) => (
-              <div
-                className="flex gap-3"
-                key={item.id}
-                onClick={() => handleToggleBrand(item.value)}
-              >
-                <Checkbox checked={state.selectedBrands.includes(item.value)} />
-                <p className="text-primary text-sm/5 font-medium">
-                  {item.value}
-                  <span className="text-secondary font-normal">
-                    {`(${item.quantity})`}
-                  </span>
-                </p>
-              </div>
-            ))}
+            <div className="flex flex-col gap-3  pb-3">
+              {brandDataFilter.map((item) => (
+                <div
+                  className="flex gap-3"
+                  key={item.id}
+                  onClick={() => handleToggleBrand(item.value)}
+                >
+                  <Checkbox
+                    checked={state.selectedBrands.includes(item.value)}
+                  />
+                  <p className="text-primary text-sm/5 font-medium">
+                    {item.value}
+                    <span className="text-secondary font-normal">
+                      {`(${item.quantity})`}
+                    </span>
+                  </p>
+                </div>
+              ))}
+            </div>
           </AccordionItem>
           <AccordionItem
             defaultOpen
@@ -97,40 +101,46 @@ export const FilterSidebar = () => {
             id="year"
             title="Năm sản xuất"
           >
-            {yearDataFilter.map((item) => (
-              <div
-                className="flex gap-3"
-                key={item.id}
-                onClick={() => handleToggleYeard(item.value)}
-              >
-                <Checkbox checked={state.selectedYears.includes(item.value)} />
-                <p className="text-primary text-sm/5 font-medium">
-                  {item.value}
-                  <span className="text-secondary font-normal">
-                    {`(${item.quantity})`}
-                  </span>
-                </p>
-              </div>
-            ))}
+            <div className="flex flex-col gap-3  pb-3">
+              {yearDataFilter.map((item) => (
+                <div
+                  className="flex gap-3"
+                  key={item.id}
+                  onClick={() => handleToggleYeard(item.value)}
+                >
+                  <Checkbox
+                    checked={state.selectedYears.includes(item.value)}
+                  />
+                  <p className="text-primary text-sm/5 font-medium">
+                    {item.value}
+                    <span className="text-secondary font-normal">
+                      {`(${item.quantity})`}
+                    </span>
+                  </p>
+                </div>
+              ))}
+            </div>
           </AccordionItem>
           <AccordionItem defaultOpen isOpen={true} id="made" title="Xuất xứ">
-            {originDataFilter.map((item) => (
-              <div
-                className="flex gap-3"
-                key={item.id}
-                onClick={() => handleToggleOrigin(item.value)}
-              >
-                <Checkbox
-                  checked={state.selectedOrigins.includes(item.value)}
-                />
-                <p className="text-primary text-sm/5 font-medium">
-                  {item.value}
-                  <span className="text-secondary font-normal">
-                    {`(${item.quantity})`}
-                  </span>
-                </p>
-              </div>
-            ))}
+            <div className="flex flex-col gap-3  pb-3">
+              {originDataFilter.map((item) => (
+                <div
+                  className="flex gap-3"
+                  key={item.id}
+                  onClick={() => handleToggleOrigin(item.value)}
+                >
+                  <Checkbox
+                    checked={state.selectedOrigins.includes(item.value)}
+                  />
+                  <p className="text-primary text-sm/5 font-medium">
+                    {item.value}
+                    <span className="text-secondary font-normal">
+                      {`(${item.quantity})`}
+                    </span>
+                  </p>
+                </div>
+              ))}
+            </div>
           </AccordionItem>
         </Accordion>
       </div>

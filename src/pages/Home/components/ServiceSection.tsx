@@ -2,11 +2,11 @@ import { serviceData } from "@/constants";
 
 const ServiceSection = () => {
   return (
-    <section className="grid grid-cols-4 mt-5 place-items-center gap-8 py-10 w-full max-w-[1440px] mx-auto ">
+    <section className="grid grid-cols-1 px-4 md:px-0 md:grid-cols-4 mt-5 place-items-center gap-8 py-10 w-full max-w-[1440px] mx-auto ">
       {serviceData.map((item, index) => (
         <div
           key={index}
-          className="flex gap-4 py-6.5 px-2.5 bg-white shadow-lg rounded-xl w-full "
+          className="flex gap-4 py-6.5 px-2.5 bg-white shadow-sm md:shadow-lg rounded-xl w-full "
         >
           <item.Icon className="w-12 h-12 text-primary" />
           <div className="flex flex-col">

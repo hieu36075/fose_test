@@ -10,8 +10,8 @@ export default function FooterColumn({
   highlightFirst = false,
 }: FooterColumnProps) {
   return (
-    <div className="flex flex-col gap-8">
-      <h2 className="text-2xl/7.5 font-semibold text-blue-800">{title}</h2>
+    <div className="flex flex-col gap-4 md:gap-8">
+      <h2 className="text-xl md:text-2xl/7.5 font-semibold text-blue-800">{title}</h2>
       <ul className="flex flex-col gap-3 text-secondary text-base/7 [&>li]:cursor-pointer [&>li:hover]:text-blue-500">
         {items.map((item, idx) => (
           <li

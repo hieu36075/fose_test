@@ -29,7 +29,7 @@ interface DropdownMenuProps {
 const DropdownMenu = React.memo(
   ({ hoveredIndex, setHoveredIndex }: DropdownMenuProps) => {
     return (
-      <div className="hidden absolute top-[100%] translate-y-0.5 left-0  z-99 w-[calc(100vw-300px)] rounded-xl bg-gray-backgroud shadow-lg category-dropdown">
+      <div className="hidden absolute top-[100%] left-0  z-99 w-[calc(100vw-400px)] rounded-xl bg-gray-backgroud shadow-lg category-dropdown">
         <div className="flex w-full text-primary">
           <div className="felx flex-col w-1/4 ">
             {categoryData.map((category, index) => (
@@ -46,7 +46,7 @@ const DropdownMenu = React.memo(
                   alt={category.name}
                 />
                 <div className="flex  justify-between items-center w-full">
-                  <p>Bộ Lọc Dầu</p>
+                  <p>{category.name}</p>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               </div>

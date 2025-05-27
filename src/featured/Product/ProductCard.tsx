@@ -12,7 +12,7 @@ interface ProductCardProps {
 
 export const ProductCard = React.memo(
   ({ product, hot = true, size = "medium", className }: ProductCardProps) => {
-    const sizeText = size === "small" ? "px-3 py-4" : "py-4 px-6";
+    const sizeText = size === "small" ? "px-3 py-4" : "px-3 py-4 md:py-4 md:px-6";
     if (!product) return null;
     return (
       <div className={cn("flex flex-col w-full bg-white shadow-xs rounded-lg", className)}>
@@ -26,18 +26,18 @@ export const ProductCard = React.memo(
         <div className={`flex flex-col ${sizeText} gap-4`}>
           {hot && (
             <div className="flex items-center justify-between bg-gradient-to-r from-light to-warning w-max rounded-full py-1.5 px-3 gap-2">
-              <HotIcon />
-              <p className="text-darker text-sm">{product.tag}</p>
+              <HotIcon className="rounded-full" />
+              <p className="text-darker text-xs md:text-sm">{product.tag}</p>
             </div>
           )}
-          <p className="text-primary text-base line-clamp-2 font-semibold">
+          <p className="text-primary text-sm md:text-base line-clamp-2 font-semibold">
             {product.name}
           </p>
           <div className="flex flex-col gap-2">
-            <p className="text-dark text-xl/6 font-semibold">
+            <p className="text-dark text-lg md:text-xl/6 font-semibold">
               {product.price.toLocaleString()} đ
             </p>
-            <p className="text-disable">
+            <p className="text-disable text-xs  md:text-md/[24px]">
               {product.oldPrice.toLocaleString()} đ
               <span className="text-dark ml-1.5">{product.discount}</span>
             </p>

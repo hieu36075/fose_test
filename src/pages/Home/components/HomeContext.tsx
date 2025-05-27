@@ -33,12 +33,12 @@ const HomeContext = () => {
       <FilterSidebar />
       <div className="flex flex-col flex-1 ">
         <ProductHeader
-          selectedSort={""}
+          selectedSort={state.sortBy}
           onChange={function (value: string): void {
             throw new Error(`Function not implemented. ${value}`);
           }}
         />
-        <div className="grid grid-cols-4 gap-5 mt-5">
+        <div className="grid grid-cols-2  md:grid-cols-3  lg:grid-cols-4 gap-5 mt-5 px-4 md:px-0">
           {filteredProducts.map((product, index) => (
             <ProductCard key={`${product.id}-${index}`} product={product} />
           ))}

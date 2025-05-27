@@ -7,7 +7,7 @@ import ShowroomSection from "./components/ShowroomSection";
 
 const HomePage = () => {
   return (
-    <div className="w-full flex flex-col h-screen  mx-auto ">
+    <div className="w-full flex flex-col h-screen mx-auto lg:px-4 xl:px-0 ">
       <Navbar />
       <div className="flex flex-col bg-gray-backgroud">
         <Banner />
