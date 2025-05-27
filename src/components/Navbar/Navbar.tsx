@@ -7,6 +7,10 @@ import {
   TimeIcon,
   TrunkIcon,
 } from "@/assets/svg";
+import { products } from "@/constants";
+import { ProductCard } from "@/featured/Product/ProductCard";
+import { useCallback, useState } from "react";
+import DropdownMenu from "./DropdownMenu";
 import Logo from "./Logo";
 import NavItem from "./NavItem";
 import SearchBar from "./SearchBar";
@@ -56,8 +60,17 @@ const munuItemWithIconData = [
 ];
 
 export const Navbar = () => {
+  const [hoveredIndex, setHoveredIndex] = useState(0);
+
+  const handleSetHoveredIndex = useCallback(
+    (index: number) => {
+      setHoveredIndex(index);
+    },
+    [setHoveredIndex]
+  );
+
   return (
-    <header className="flex flex-col w-full ">
+    <header className="flex flex-col w-full max-w-[1440px] mx-auto ">
       <div className="flex max-h-28 w-full items-center">
         <Logo />
         <div className="flex-1 mx-12 w-full">
@@ -70,11 +83,14 @@ export const Navbar = () => {
         </div>
       </div>
       <div className="mt-6 flex w-full">
-        <div className="flex relative items-center gap-2 p-4 bg-[#0373f3] text-white rounded-lg group  ">
+        <div className="flex relative items-center gap-2 p-4 bg-[#0373f3] [&:hover>.category-dropdown]:block text-white rounded-lg group  ">
           <MunuIcon className="w-6 h-6 flex-shrink-0" />
           <span className="flex-grow min-w-0 truncate">Danh mục sản phẩm</span>
-          <ArrowDownIcon className="w-5 h-5 flex-shrink-0 transition-transform duration-300 delay-250 ease-in-out group-hover:-rotate-180" />
-          <span className="absolute bottom-0 left-0 h-[1px] w-full group-hover:bg-blue-800"></span>
+          <ArrowDownIcon className="w-5 h-5 flex-shrink-0 transition-transform duration-300 delay-250 ease-in-out  group-hover:-rotate-180" />
+          <DropdownMenu
+            hoveredIndex={hoveredIndex}
+            setHoveredIndex={handleSetHoveredIndex}
+          />
         </div>
         <div className="flex justify-between w-full">
           <ul className="[list-style:none] flex items-center gap-8 ml-8">
@@ -90,7 +106,7 @@ export const Navbar = () => {
             ))}
           </ul>
 
-          <ul className="[list-style:none] flex items-center gap-8 ml-8">
+          <ul className="[list-style:none] relative flex items-center gap-8 ml-8 [&>.cart-dropdown]:hover:block">
             {munuItemWithIconData.map(({ Icon, label }, index) => (
               <li key={index} className="flex gap-2 text-base/6 font-semibold">
                 <Icon className="w-6 h-6" />
@@ -99,6 +115,7 @@ export const Navbar = () => {
                 </span>
               </li>
             ))}
+
           </ul>
         </div>
       </div>

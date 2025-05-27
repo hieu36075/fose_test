@@ -5,7 +5,7 @@
 @theme {
   --color-disable: #919eab;
   --color-primary: #1c252e;
-
+  --color-secondary: #637381;
   --color-warning: #ffab00;
 
   --color-lighter: #fff5cc;
@@ -24,9 +24,12 @@
   --color-blue-500: #0373f3;
   --color-blue-600: #025fca;
   --color-blue-700: #0258b9;
-  --color-blue-800: #014a9c;
+  --color-blue-800: #013065;
 
   --color-brand-50: #e6f1ff;
+  --color-brand-100: #cde4fe;
+
+  --color-gray-backgroud: #f4f6f8;
   --font-family: "Inter", sans-serif;
   --font-epilogue: "Epilogue", sans-serif;
 }
