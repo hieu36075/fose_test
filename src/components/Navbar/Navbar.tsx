@@ -71,7 +71,7 @@ export const Navbar = () => {
   );
 
   return (
-    <header className="flex flex-col">
+    <header className="flex flex-col md:gap-6">
       <div className="bg-gradient-to-r from-[#0D57C6] via-[#37CFFF] to-[#0F5ED6] p-1.5 w-full">
         <div className="flex w-full justify-between max-w-[1440px] mx-auto">
           <div className="hidden md:flex text-white items-center gap-2">
@@ -111,7 +111,7 @@ export const Navbar = () => {
           {navItemsData.map(({ Icon, label }, index) => (
             <NavItem
               className={`${
-                index === navItemsData.length - 1 ? "flex" : "hidden"
+                index === navItemsData.length - 1 ? "flex" : "hidden md:flex"
               }`}
               key={label}
               Icon={Icon}
@@ -123,7 +123,7 @@ export const Navbar = () => {
       <div className="flex w-[calc(100vw-48px)]  mx-auto my-3 md:hidden">
         <SearchBar />
       </div>
-      <div className="hidden md:flex mt-6 w-[calc(100vw-48px)] md:w-full max-w-[1440px] mx-auto  ">
+      <div className="hidden md:flex mb-6 w-[calc(100vw-48px)] md:w-full max-w-[1440px] mx-auto  ">
         <div className="flex relative items-center gap-2 p-4 bg-[#0373f3] [&:hover>.category-dropdown]:block text-white rounded-lg group  ">
           <MenuIcon className="w-6 h-6 flex-shrink-0" />
           <span className="flex-grow min-w-0 truncate">Danh mục sản phẩm</span>

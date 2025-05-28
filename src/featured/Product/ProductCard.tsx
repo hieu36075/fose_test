@@ -15,7 +15,7 @@ export const ProductCard = React.memo(
     const sizeText = size === "small" ? "px-3 py-4" : "px-3 py-4 md:py-4 md:px-6";
     if (!product) return null;
     return (
-      <div className={cn("flex flex-col w-full bg-white shadow-xs rounded-lg", className)}>
+      <div className={cn("flex flex-col w-full bg-white shadow-xs rounded-lg cursor-pointer group transition-all duration-300 ease-in-out hover:shadow-md hover:scale-[1.02]", className)}>
         <div className="p-2">
           <img
             className="w-full h-full aspect-[1/1] object-contain bg-transparent"

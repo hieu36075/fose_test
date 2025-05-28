@@ -2,7 +2,7 @@ import { CategoryImage1 } from "@/assets";
 import { ArrowRight } from "@/assets/svg";
 import { products } from "@/constants";
 import { ProductCard } from "@/featured/Product/ProductCard";
-import React from "react";
+import React, { useMemo } from "react";
 import { Divider } from "../ui/Divider";
 
 const categoryData = [
@@ -22,20 +22,29 @@ const categoryData = [
     image: CategoryImage1,
   },
 ];
+
 interface DropdownMenuProps {
   hoveredIndex: number;
   setHoveredIndex: (index: number) => void;
 }
+
 const DropdownMenu = React.memo(
   ({ hoveredIndex, setHoveredIndex }: DropdownMenuProps) => {
+    const filteredProducts = useMemo(() => {
+      const currentCategory = categoryData[hoveredIndex]?.name;
+      return products.filter((p) =>
+        p.category.toLowerCase().includes(currentCategory.toLowerCase())
+      );
+    }, [hoveredIndex]);
+
     return (
-      <div className="hidden absolute top-[100%] left-0  z-99 w-[calc(100vw-400px)] rounded-xl bg-gray-backgroud shadow-lg category-dropdown">
+      <div className="hidden absolute top-[100%] left-0  z-99 w-[calc(100vw-400px)] h-[714px] rounded-xl bg-gray-backgroud shadow-lg category-dropdown">
         <div className="flex w-full text-primary">
-          <div className="felx flex-col w-1/4 ">
+          <div className="flex flex-col w-1/4">
             {categoryData.map((category, index) => (
               <div
-                className={`flex w-full py-3  cursor-pointer ${
-                  index === hoveredIndex ? "bg-transparent" : "bg-white"
+                className={`flex w-full py-3 px-4 cursor-pointer ${
+                  index === hoveredIndex ? "bg-gray-100" : "bg-white"
                 }`}
                 key={category.id}
                 onMouseEnter={() => setHoveredIndex(index)}
@@ -45,13 +54,14 @@ const DropdownMenu = React.memo(
                   src={category.image}
                   alt={category.name}
                 />
-                <div className="flex  justify-between items-center w-full">
+                <div className="flex justify-between items-center w-full ml-3">
                   <p>{category.name}</p>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               </div>
             ))}
           </div>
+
           <div className="flex flex-col flex-1 p-6">
             <div className="grid grid-cols-3 gap-4">
               {Array.from({ length: 6 }).map((_, index) => (
@@ -64,11 +74,15 @@ const DropdownMenu = React.memo(
                     src={CategoryImage1}
                     alt="name"
                   />
-                  <span className="ml-2">Bộ lọc dầu</span>
+                  <span className="ml-2">
+                    {categoryData[hoveredIndex]?.name}
+                  </span>
                 </div>
               ))}
             </div>
+
             <Divider className="mb-6 mt-7" />
+
             <div className="flex justify-between mb-6">
               <h2 className="text-2xl/8 font-semibold">Sản phẩm bán chạy</h2>
               <a href="#" className="flex gap-2 items-center">
@@ -79,8 +93,9 @@ const DropdownMenu = React.memo(
                 </div>
               </a>
             </div>
+
             <div className="grid grid-cols-5 gap-4">
-              {products.slice(0, 5).map((product, index) => (
+              {filteredProducts.slice(0, 5).map((product, index) => (
                 <ProductCard
                   size="small"
                   hot={false}
