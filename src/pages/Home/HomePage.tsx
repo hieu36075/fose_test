@@ -4,6 +4,7 @@ import { Banner } from "./components/Banner";
 import HomeContext from "./components/HomeContext";
 import ServiceSection from "./components/ServiceSection";
 import ShowroomSection from "./components/ShowroomSection";
+import ButtonToTop from "@/components/ButtonToTop";
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
       <ServiceSection />
       <ShowroomSection />
       <Footer />
+      <ButtonToTop />
     </div>
   );
 };
