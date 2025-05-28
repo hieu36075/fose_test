@@ -22,7 +22,7 @@ const ButtonToTop = () => {
   return (
     <div
       onClick={scrollToTop}
-      className="fixed w-10 h-10 flex items-center justify-center bottom-22 right-12 border border-primary rounded-full cursor-pointer group bg-white shadow-md transition-opacity duration-300 hover:shadow-lg"
+      className="fixed w-10 h-10 flex items-center justify-center bottom-22 right-12 border border-primary rounded-full cursor-pointer group bg-white shadow-md transition-opacity duration-300 hover:shadow-lg z-999"
     >
       <ArrowTopIcon className="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1" />
     </div>
