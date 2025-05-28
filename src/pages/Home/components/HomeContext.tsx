@@ -3,6 +3,7 @@ import { ProductHeader } from "@/components/ProductHeader";
 import { products } from "@/constants";
 import { useFilter } from "@/context/ProductContext";
 import { ProductCard } from "@/featured/Product/ProductCard";
+import { useEffect, useRef, useState } from "react";
 
 const HomeContext = () => {
   const { state } = useFilter();
@@ -23,11 +24,38 @@ const HomeContext = () => {
     return matchesBrand && matchesCategory && matchesYear && matchesOrigin;
   });
 
-  // if (state.sortBy === "price_asc") {
-  //   filteredProducts = filteredProducts.sort((a, b) => a.price - b.price);
-  // } else if (state.sortBy === "price_desc") {
-  //   filteredProducts = filteredProducts.sort((a, b) => b.price - a.price);
-  // }
+  const [visibleCount, setVisibleCount] = useState(12);
+  const [loading, setLoading] = useState(false);
+  const observerRef = useRef<HTMLDivElement | null>(null);
+  const observer = useRef<IntersectionObserver | null>(null);
+
+  const loadMore = () => {
+    if (loading || visibleCount >= filteredProducts.length) return;
+    setLoading(true);
+    setTimeout(() => {
+      setVisibleCount((prev) => prev + 8);
+      setLoading(false);
+    }, 1000);
+  };
+
+  useEffect(() => {
+    if (!observerRef.current) return;
+
+    observer.current = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        loadMore();
+      }
+    });
+
+    observer.current.observe(observerRef.current);
+
+    return () => {
+      if (observer.current && observerRef.current) {
+        observer.current.unobserve(observerRef.current);
+      }
+    };
+  }, [observerRef, visibleCount]);
+
   return (
     <div className="flex w-full my-8 gap-5 max-w-[1440px] mx-auto">
       <FilterSidebar />
@@ -39,9 +67,17 @@ const HomeContext = () => {
           }}
         />
         <div className="grid grid-cols-2  md:grid-cols-3  lg:grid-cols-4 gap-5 mt-5 px-4 md:px-0">
-          {filteredProducts.map((product, index) => (
+          {filteredProducts.slice(0, visibleCount).map((product, index) => (
             <ProductCard key={`${product.id}-${index}`} product={product} />
           ))}
+          {visibleCount < filteredProducts.length && (
+            <div
+              ref={observerRef}
+              className="col-span-full flex justify-center py-4"
+            >
+              <div className="animate-spin rounded-full border-4 border-blue-500 border-t-transparent h-8 w-8" />
+            </div>
+          )}
         </div>
       </div>
     </div>
